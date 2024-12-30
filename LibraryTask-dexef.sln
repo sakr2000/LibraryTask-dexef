@@ -4,6 +4,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 17.12.35527.113 d17.12
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibraryTask-dexef", "LibraryTask-dexef\LibraryTask-dexef.csproj", "{80FA8DF1-9C78-4EA9-A5E9-DC103E1B82AE}"
+	ProjectSection(ProjectDependencies) = postProject
+		{10B4FA0D-B33F-489D-B4EA-B7E9B27A31C6} = {10B4FA0D-B33F-489D-B4EA-B7E9B27A31C6}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibraryTask-dexef.Shared", "LibraryTask-dexef.Shared\LibraryTask-dexef.Shared.csproj", "{10B4FA0D-B33F-489D-B4EA-B7E9B27A31C6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +20,10 @@ Global
 		{80FA8DF1-9C78-4EA9-A5E9-DC103E1B82AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{80FA8DF1-9C78-4EA9-A5E9-DC103E1B82AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{80FA8DF1-9C78-4EA9-A5E9-DC103E1B82AE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{10B4FA0D-B33F-489D-B4EA-B7E9B27A31C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{10B4FA0D-B33F-489D-B4EA-B7E9B27A31C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{10B4FA0D-B33F-489D-B4EA-B7E9B27A31C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{10B4FA0D-B33F-489D-B4EA-B7E9B27A31C6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
