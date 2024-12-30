@@ -1,0 +1,6 @@
+@LibraryTask_dexef_HostAddress = http://localhost:5225
+
+GET {{LibraryTask_dexef_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
