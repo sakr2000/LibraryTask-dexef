@@ -1,7 +1,7 @@
-using libraryTask_dexef.Application.Common.Interfaces;
+using LibraryTask_dexef.Application.Common.Interfaces;
 using System.Security.Claims;
 
-namespace libraryTask_dexef.Application.Services
+namespace LibraryTask_dexef.Application.Services
 {
 
     public class CurrentUser(ITokenService tokenService, ICookieService cookieService) : ICurrentUser

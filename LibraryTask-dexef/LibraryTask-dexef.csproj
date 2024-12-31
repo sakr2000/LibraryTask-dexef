@@ -8,7 +8,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="WebApi\Controllers\" />
     <Folder Include="WebApi\NewFolder\" />
   </ItemGroup>
 

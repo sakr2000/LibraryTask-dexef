@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Diagnostics;
 using System.Reflection;
 
 namespace LibraryTask_dexef.Infrastructure.Data
@@ -10,6 +11,8 @@ namespace LibraryTask_dexef.Infrastructure.Data
             IdentityRoleClaim<Guid>, IdentityUserToken<Guid>>
     {
         public DbSet<Book> Books { get; set; }
+
+        public DbSet<BorrowedBooks> BorrowedBooks { get; set; } 
         public LibraryDBContext(DbContextOptions<LibraryDBContext> options) : base(options)
         {
         }
@@ -29,6 +32,13 @@ namespace LibraryTask_dexef.Infrastructure.Data
             builder.Entity<IdentityUserToken<Guid>>().ToTable("UserTokens").HasKey(x => x.UserId);
 
             builder.Seed();
+        }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            base.OnConfiguring(optionsBuilder);
+            optionsBuilder
+       .ConfigureWarnings(warnings => warnings.Ignore(RelationalEventId.PendingModelChangesWarning));
         }
     }
 }

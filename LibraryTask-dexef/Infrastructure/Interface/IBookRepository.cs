@@ -1,4 +1,4 @@
-namespace libraryTask_dexef.Infrastructure.Interface
+namespace LibraryTask_dexef.Infrastructure.Interface
 {
 
     public interface IBookRepository : IGenericRepository<Book>

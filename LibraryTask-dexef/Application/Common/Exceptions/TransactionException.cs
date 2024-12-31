@@ -3,7 +3,7 @@ using LibraryTask_dexef.Domain.Constants;
 using LibraryTask_dexef.Shared.Enums;
 using System.Diagnostics.CodeAnalysis;
 
-namespace libraryTask_dexef.Application.Common.Exceptions
+namespace LibraryTask_dexef.Application.Common.Exceptions
 {
 
     [ExcludeFromCodeCoverage]

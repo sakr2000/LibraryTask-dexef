@@ -306,7 +306,7 @@ namespace LibraryTask_dexef.Migrations
                     b.ToTable("UserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("libraryTask_dexef.Domain.Entities.RefreshToken", b =>
+            modelBuilder.Entity("LibraryTask_dexef.Domain.Entities.RefreshToken", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -392,7 +392,7 @@ namespace LibraryTask_dexef.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("libraryTask_dexef.Domain.Entities.RefreshToken", b =>
+            modelBuilder.Entity("LibraryTask_dexef.Domain.Entities.RefreshToken", b =>
                 {
                     b.HasOne("LibraryTask_dexef.Domain.Entities.ApplicationUser", "User")
                         .WithMany("RefreshTokens")

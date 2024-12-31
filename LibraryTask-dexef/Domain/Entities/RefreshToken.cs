@@ -1,6 +1,6 @@
-using libraryTask_dexef.Application.Common.Models;
+using LibraryTask_dexef.Application.Common.Models;
 
-namespace libraryTask_dexef.Domain.Entities
+namespace LibraryTask_dexef.Domain.Entities
 {
     public class RefreshToken
     {

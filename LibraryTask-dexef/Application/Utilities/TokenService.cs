@@ -1,17 +1,17 @@
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
-using libraryTask_dexef.Application;
-using libraryTask_dexef.Application.Common;
-using libraryTask_dexef.Application.Common.Interfaces;
-using libraryTask_dexef.Domain.Entities;
+using LibraryTask_dexef.Application;
+using LibraryTask_dexef.Application.Common;
+using LibraryTask_dexef.Application.Common.Interfaces;
+using LibraryTask_dexef.Domain.Entities;
 using LibraryTask_dexef.Shared.Enums;
 using LibraryTask_dexef.Shared.Models.AuthIdentity.UsersIdentity;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel.Logging;
 using Microsoft.IdentityModel.Tokens;
 
-namespace libraryTask_dexef.Application.Common.Utilities
+namespace LibraryTask_dexef.Application.Common.Utilities
 {
 
     public class TokenService : ITokenService

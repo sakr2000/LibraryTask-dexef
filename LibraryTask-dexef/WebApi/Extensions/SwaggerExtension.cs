@@ -1,7 +1,7 @@
-using libraryTask_dexef.Application.Common;
+using LibraryTask_dexef.Application.Common;
 using Microsoft.OpenApi.Models;
 
-namespace libraryTask_dexef.WebApi.Extensions
+namespace LibraryTask_dexef.WebApi.Extensions
 {
 
     public static class SwaggerExtension
@@ -33,9 +33,12 @@ namespace libraryTask_dexef.WebApi.Extensions
 
                 var securityScheme = new OpenApiSecurityScheme
                 {
-                    Description = "JWT Authorization header using the Bearer scheme. Example: \"Authorization: Bearer {token}\"",
+                    Description = "JWT Authorization header using the Bearer scheme. Example: \"Bearer {token}\"",
                     Name = "Authorization",
+                    In = ParameterLocation.Header,
+                    Type = SecuritySchemeType.Http,
                     Scheme = "bearer",
+                    BearerFormat = "JWT",
                     Reference = new OpenApiReference
                     {
                         Type = ReferenceType.SecurityScheme,

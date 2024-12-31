@@ -1,7 +1,7 @@
 
-using libraryTask_dexef.Application.Common;
+using LibraryTask_dexef.Application.Common;
 
-namespace libraryTask_dexef.WebApi.Extensions
+namespace LibraryTask_dexef.WebApi.Extensions
 {
     public static class CorsExtension
     {

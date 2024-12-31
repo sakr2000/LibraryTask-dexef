@@ -2,7 +2,7 @@
 using LibraryTask_dexef.Shared.Models.AuthIdentity.UsersIdentity;
 using System.Security.Claims;
 
-namespace libraryTask_dexef.Application.Common.Interfaces
+namespace LibraryTask_dexef.Application.Common.Interfaces
 {
 
     public interface ITokenService

@@ -1,5 +1,5 @@
 using System.Text;
-using libraryTask_dexef.Application.Common;
+using LibraryTask_dexef.Application.Common;
 using LibraryTask_dexef.Domain.Authorization;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
@@ -11,19 +11,21 @@ namespace LibraryTask_dexef.WebApi.Extensions
     {
         public static void AddAuth(this IServiceCollection services, Identity identitySettings, bool isLocal = false)
         {
-            var authenticationBuilder = services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme);
+            var authenticationBuilder = services.AddAuthentication($"{JwtBearerDefaults.AuthenticationScheme}_{identitySettings.Issuer}");
             authenticationBuilder.AddJwtBearer($"{JwtBearerDefaults.AuthenticationScheme}_{identitySettings.Issuer}", options =>
             {
                 options.TokenValidationParameters = new TokenValidationParameters
                 {
-                    ValidateIssuer = true,
-                    ValidateLifetime = !isLocal, // Disable lifetime validation for local
-                    ValidateAudience = true,
+                    ValidateIssuer = !isLocal,
+                    ValidateLifetime = !isLocal,
+                    ValidateAudience = !isLocal, 
                     ValidIssuer = identitySettings.Issuer,
                     ValidAudience = identitySettings.Audience,
                     IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(identitySettings.Key)),
                     ValidateIssuerSigningKey = true,
+                    ClockSkew = TimeSpan.FromMinutes(20), 
                 };
+
                 options.Authority = identitySettings.Issuer;
                 options.RequireHttpsMetadata = identitySettings.ValidateHttps;
             });

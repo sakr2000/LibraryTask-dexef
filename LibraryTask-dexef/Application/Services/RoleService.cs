@@ -1,9 +1,9 @@
-using libraryTask_dexef.Application.Common.Interfaces;
+using LibraryTask_dexef.Application.Common.Interfaces;
 using LibraryTask_dexef.Shared.Models.AuthIdentity.Roles;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
-namespace libraryTask_dexef.Application.Services
+namespace LibraryTask_dexef.Application.Services
 {
 
     public class RoleService : IRoleService

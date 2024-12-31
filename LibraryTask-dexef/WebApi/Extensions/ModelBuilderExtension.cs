@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 
-namespace libraryTask_dexef.Web.Extensions
+namespace LibraryTask_dexef.Web.Extensions
 {
 
     /// <summary>

@@ -1,10 +1,10 @@
 using System.Linq.Expressions;
-using libraryTask_dexef.Application.Common.Models;
-using libraryTask_dexef.Infrastructure.Interface;
+using LibraryTask_dexef.Application.Common.Models;
+using LibraryTask_dexef.Infrastructure.Interface;
 using LibraryTask_dexef.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 
-namespace libraryTask_dexef.Application.Repositories
+namespace LibraryTask_dexef.Application.Repositories
 {
 
     public class GenericRepository<T>(LibraryDBContext context) : IGenericRepository<T> where T : class

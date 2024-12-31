@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 
-namespace libraryTask_dexef.Application.Common.Models
+namespace LibraryTask_dexef.Application.Common.Models
 {
 
     public class Pagination<T>(List<T> items, int count, int pageIndex, int pageSize)

@@ -1,6 +1,6 @@
-using libraryTask_dexef.Domain.Entities;
+using LibraryTask_dexef.Domain.Entities;
 
-namespace libraryTask_dexef.Infrastructure.Interface
+namespace LibraryTask_dexef.Infrastructure.Interface
 {
     public interface IRefreshTokenRepository : IGenericRepository<RefreshToken> { }
 }

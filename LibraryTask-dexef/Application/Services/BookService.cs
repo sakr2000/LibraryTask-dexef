@@ -1,11 +1,11 @@
 using AutoMapper;
-using libraryTask_dexef.Application;
-using libraryTask_dexef.Application.Common.Interfaces;
-using libraryTask_dexef.Application.Common.Models;
+using LibraryTask_dexef.Application;
+using LibraryTask_dexef.Application.Common.Interfaces;
+using LibraryTask_dexef.Application.Common.Models;
 using LibraryTask_dexef.Application.Common.Exceptions;
 using LibraryTask_dexef.Shared.Models.Book;
 
-namespace libraryTask_dexef.Application.Services
+namespace LibraryTask_dexef.Application.Services
 {
 
     public class BookService : IBookService

@@ -1,8 +1,8 @@
 
-using libraryTask_dexef.Application.Common.Models;
+using LibraryTask_dexef.Application.Common.Models;
 using LibraryTask_dexef.Shared.Models.Book;
 
-namespace libraryTask_dexef.Application.Common.Interfaces
+namespace LibraryTask_dexef.Application.Common.Interfaces
 {
 
     public interface IBookService

@@ -1,13 +1,13 @@
 using AutoMapper;
-using libraryTask_dexef.Application;
-using libraryTask_dexef.Application.Common.Interfaces;
-using libraryTask_dexef.Application.Common.Utilities;
-using libraryTask_dexef.Infrastructure.Interface;
+using LibraryTask_dexef.Application;
+using LibraryTask_dexef.Application.Common.Interfaces;
+using LibraryTask_dexef.Application.Common.Utilities;
+using LibraryTask_dexef.Infrastructure.Interface;
 using LibraryTask_dexef.Application.Common.Exceptions;
 using LibraryTask_dexef.Domain.Constants;
 using LibraryTask_dexef.Shared.Models.User;
 
-namespace libraryTask_dexef.Application.Services
+namespace LibraryTask_dexef.Application.Services
 {
     public class AuthService : IAuthService
     {
@@ -38,7 +38,7 @@ namespace libraryTask_dexef.Application.Services
             var user = await _unitOfWork.UserRepository.FirstOrDefaultAsync(x => x.UserName == request.UserName)
                 ?? throw UserException.BadRequestException(UserErrorMessage.UserNotExist);
 
-            if (!StringHelper.Verify(request.Password, user.Password))
+            if (!StringHelper.Verify(request.Password, StringHelper.Hash(user.Password)))
             {
                 throw UserException.BadRequestException(UserErrorMessage.PasswordIncorrect);
             }

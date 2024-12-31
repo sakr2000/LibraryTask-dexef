@@ -1,8 +1,8 @@
-using libraryTask_dexef.Domain.Entities;
+using LibraryTask_dexef.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace libraryTask_dexef.Infrastructure.Data.Configurations
+namespace LibraryTask_dexef.Infrastructure.Data.Configurations
 {
 
     public class RefreshTokenConfig : IEntityTypeConfiguration<RefreshToken>

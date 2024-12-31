@@ -1,6 +1,6 @@
 using LibraryTask_dexef.Shared.Models.User;
 
-namespace libraryTask_dexef.Application.Common.Interfaces
+namespace LibraryTask_dexef.Application.Common.Interfaces
 {
     public interface IAuthService
     {

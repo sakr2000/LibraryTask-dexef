@@ -1,5 +1,5 @@
 
-namespace libraryTask_dexef.WebApi.Middlewares
+namespace LibraryTask_dexef.WebApi.Middlewares
 {
 
     public class GlobalExceptionMiddleware(ILoggerFactory logger) : IMiddleware

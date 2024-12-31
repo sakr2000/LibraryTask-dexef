@@ -1,7 +1,7 @@
 using System.Linq.Expressions;
-using libraryTask_dexef.Application.Common.Models;
+using LibraryTask_dexef.Application.Common.Models;
 
-namespace libraryTask_dexef.Infrastructure.Interface
+namespace LibraryTask_dexef.Infrastructure.Interface
 {
 
     public interface IGenericRepository<T> where T : class

@@ -5,7 +5,7 @@ using LibraryTask_dexef.Domain.Constants;
 using LibraryTask_dexef.Shared.Enums;
 using Microsoft.AspNetCore.Diagnostics;
 
-namespace libraryTask_dexef.WebApi.Extensions
+namespace LibraryTask_dexef.WebApi.Extensions
 {
     public static class ExceptionMiddlewareExtensions
     {

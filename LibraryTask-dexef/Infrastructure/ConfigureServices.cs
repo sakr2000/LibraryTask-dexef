@@ -1,8 +1,8 @@
-using libraryTask_dexef.Application;
-using libraryTask_dexef.Application.Common;
-using libraryTask_dexef.Application.Repositories;
-using libraryTask_dexef.Infrastructure;
-using libraryTask_dexef.Infrastructure.Interface;
+using LibraryTask_dexef.Application;
+using LibraryTask_dexef.Application.Common;
+using LibraryTask_dexef.Application.Repositories;
+using LibraryTask_dexef.Infrastructure;
+using LibraryTask_dexef.Infrastructure.Interface;
 using LibraryTask_dexef.Infrastructure.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -32,6 +32,7 @@ namespace LibraryTask_dexef.Infrastructure
             // register services
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IBookRepository, BookRepository>();
+            services.AddScoped<IBorrowedBooksRepository, BorrowedBooksRepository>();
             services.AddScoped<IRefreshTokenRepository, RefreshTokenRepository>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
 

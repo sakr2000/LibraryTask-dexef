@@ -1,12 +1,12 @@
 using System.Security.Claims;
-using libraryTask_dexef.Application;
-using libraryTask_dexef.Application.Common.Exceptions;
-using libraryTask_dexef.Application.Common.Interfaces;
+using LibraryTask_dexef.Application;
+using LibraryTask_dexef.Application.Common.Exceptions;
+using LibraryTask_dexef.Application.Common.Interfaces;
 using LibraryTask_dexef.Shared.Models.AuthIdentity.UsersIdentity;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
-namespace libraryTask_dexef.Application.Services
+namespace LibraryTask_dexef.Application.Services
 {
 
     public class UserService : IUserService

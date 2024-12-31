@@ -103,15 +103,15 @@ namespace LibraryTask_dexef.Migrations
                         {
                             Id = new Guid("69db714f-9576-45ba-b5b7-f00649be01de"),
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "eac11492-55f2-428f-9f9b-4563fbca76c8",
+                            ConcurrencyStamp = "3e6ab7f4-f612-416e-9dd2-c63f8d3b5bbf",
                             Email = "admin@gmail.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             Name = "Admin 1",
                             NormalizedEmail = "ADMIN@GMAIL.COM",
                             NormalizedUserName = "admin",
-                            Password = "",
-                            PasswordHash = "AQAAAAIAAYagAAAAEO1P+RrKrxHbgdObLRGPO1qknm9w3Vzyui0QgtMojfYaLYgDQyTuD38c06Ab1hWDpA==",
+                            Password = "P@ssw0rd",
+                            PasswordHash = "AQAAAAIAAYagAAAAEOlVhgZ0SIjPIhr+5MEm6iX3iTgVeobRJ9RF12Cz9aJxvytgBXabTU94GSLLInfFYA==",
                             PhoneNumberConfirmed = false,
                             Role = 1,
                             SecurityStamp = "",
@@ -303,7 +303,7 @@ namespace LibraryTask_dexef.Migrations
                     b.ToTable("UserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("libraryTask_dexef.Domain.Entities.RefreshToken", b =>
+            modelBuilder.Entity("LibraryTask_dexef.Domain.Entities.RefreshToken", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -389,7 +389,7 @@ namespace LibraryTask_dexef.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("libraryTask_dexef.Domain.Entities.RefreshToken", b =>
+            modelBuilder.Entity("LibraryTask_dexef.Domain.Entities.RefreshToken", b =>
                 {
                     b.HasOne("LibraryTask_dexef.Domain.Entities.ApplicationUser", "User")
                         .WithMany("RefreshTokens")

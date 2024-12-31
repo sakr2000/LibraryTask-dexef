@@ -1,4 +1,4 @@
-namespace libraryTask_dexef.Application.Common.Interfaces
+namespace LibraryTask_dexef.Application.Common.Interfaces
 {
 
     public interface ICurrentTime

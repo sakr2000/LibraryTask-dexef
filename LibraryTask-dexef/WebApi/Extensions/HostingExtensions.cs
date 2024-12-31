@@ -1,7 +1,7 @@
-using libraryTask_dexef.Application;
-using libraryTask_dexef.Application.Common;
-using libraryTask_dexef.WebApi.Extensions;
-using libraryTask_dexef.WebApi.Middlewares;
+using LibraryTask_dexef.Application;
+using LibraryTask_dexef.Application.Common;
+using LibraryTask_dexef.WebApi.Extensions;
+using LibraryTask_dexef.WebApi.Middlewares;
 using LibraryTask_dexef.Infrastructure;
 
 namespace LibraryTask_dexef.WebApi.Extensions

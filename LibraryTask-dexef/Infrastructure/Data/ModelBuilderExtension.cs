@@ -36,6 +36,8 @@ namespace LibraryTask_dexef.Domain.Entities
                 Email = "admin@gmail.com",
                 NormalizedEmail = "ADMIN@GMAIL.COM",
                 EmailConfirmed = true,
+                Password = "P@ssw0rd",
+                Role = Role.Admin,
                 PasswordHash = hashed.HashPassword(null, "P@ssw0rd"),
                 SecurityStamp = string.Empty,
                 Name = "Admin 1",

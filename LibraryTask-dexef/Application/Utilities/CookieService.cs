@@ -1,9 +1,9 @@
 
 
-using libraryTask_dexef.Application.Common.Interfaces;
+using LibraryTask_dexef.Application.Common.Interfaces;
 using LibraryTask_dexef.Application.Common.Exceptions;
 
-namespace libraryTask_dexef.Application.Common.Utilities
+namespace LibraryTask_dexef.Application.Common.Utilities
 {
 
     public class CookieService(IHttpContextAccessor httpContextAccessor) : ICookieService

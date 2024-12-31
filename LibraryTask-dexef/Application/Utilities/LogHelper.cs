@@ -1,4 +1,4 @@
-namespace libraryTask_dexef.Application.Common.Utilities
+namespace LibraryTask_dexef.Application.Common.Utilities
 {
 
     public static class LogHelper

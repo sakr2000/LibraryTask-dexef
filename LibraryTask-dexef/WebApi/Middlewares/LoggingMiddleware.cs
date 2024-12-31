@@ -1,7 +1,7 @@
 using System.Text.Json;
-using libraryTask_dexef.Application.Common.Utilities;
+using LibraryTask_dexef.Application.Common.Utilities;
 
-namespace libraryTask_dexef.WebApi.Middlewares
+namespace LibraryTask_dexef.WebApi.Middlewares
 {
 
     public class LoggingMiddleware(RequestDelegate next, ILoggerFactory loggerFactory)

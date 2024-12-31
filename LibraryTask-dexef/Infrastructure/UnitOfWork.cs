@@ -1,10 +1,10 @@
-﻿using libraryTask_dexef.Application.Repositories;
-using libraryTask_dexef.Application;
-using libraryTask_dexef.Infrastructure.Interface;
+﻿using LibraryTask_dexef.Application.Repositories;
+using LibraryTask_dexef.Application;
+using LibraryTask_dexef.Infrastructure.Interface;
 using LibraryTask_dexef.Infrastructure.Data;
-using libraryTask_dexef.Application.Common.Exceptions;
+using LibraryTask_dexef.Application.Common.Exceptions;
 
-namespace libraryTask_dexef.Infrastructure
+namespace LibraryTask_dexef.Infrastructure
 {
 
     public class UnitOfWork : IUnitOfWork
@@ -15,12 +15,14 @@ namespace libraryTask_dexef.Infrastructure
         public IBookRepository BookRepository { get; }
         public IRefreshTokenRepository RefreshTokenRepository { get; }
 
+        public IBorrowedBooksRepository BorrowedBooksRepository { get; }
         public UnitOfWork(LibraryDBContext dbContext)
         {
             _context = dbContext;
             UserRepository = new UserRepository(_context);
             BookRepository = new BookRepository(_context);
             RefreshTokenRepository = new RefreshTokenRepository(_context);
+            BorrowedBooksRepository = new BorrowedBooksRepository(_context);
         }
         public async Task SaveChangesAsync(CancellationToken token)
             => await _context.SaveChangesAsync(token);

@@ -1,12 +1,14 @@
-using libraryTask_dexef.Infrastructure.Interface;
+using LibraryTask_dexef.Infrastructure.Interface;
 
-namespace libraryTask_dexef.Application
+namespace LibraryTask_dexef.Application
 {
 
     public interface IUnitOfWork
     {
         IUserRepository UserRepository { get; }
         IBookRepository BookRepository { get; }
+
+        IBorrowedBooksRepository BorrowedBooksRepository { get; }
         IRefreshTokenRepository RefreshTokenRepository { get; }
         Task SaveChangesAsync(CancellationToken token);
         Task ExecuteTransactionAsync(Action action, CancellationToken token);

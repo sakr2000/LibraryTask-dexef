@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace libraryTask_dexef.Application.Common
+namespace LibraryTask_dexef.Application.Common
 {
 
     public class AppSettings
