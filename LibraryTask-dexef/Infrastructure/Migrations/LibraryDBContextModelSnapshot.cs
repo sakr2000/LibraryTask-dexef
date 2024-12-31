@@ -103,7 +103,7 @@ namespace LibraryTask_dexef.Migrations
                         {
                             Id = new Guid("69db714f-9576-45ba-b5b7-f00649be01de"),
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "3e6ab7f4-f612-416e-9dd2-c63f8d3b5bbf",
+                            ConcurrencyStamp = "a5756946-9ee9-4eb1-9499-6b9b954984b0",
                             Email = "admin@gmail.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
@@ -111,9 +111,9 @@ namespace LibraryTask_dexef.Migrations
                             NormalizedEmail = "ADMIN@GMAIL.COM",
                             NormalizedUserName = "admin",
                             Password = "P@ssw0rd",
-                            PasswordHash = "AQAAAAIAAYagAAAAEOlVhgZ0SIjPIhr+5MEm6iX3iTgVeobRJ9RF12Cz9aJxvytgBXabTU94GSLLInfFYA==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEFO/nu8EmmrpbprVbGnizIBSTkQHhZjyZK+7kd5XehRBkV6B+3b7t3ZcKiIrd5fkVQ==",
                             PhoneNumberConfirmed = false,
-                            Role = 1,
+                            Role = 0,
                             SecurityStamp = "",
                             TwoFactorEnabled = false,
                             UserName = "admin"
@@ -149,6 +149,66 @@ namespace LibraryTask_dexef.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Book", (string)null);
+                });
+
+            modelBuilder.Entity("LibraryTask_dexef.Domain.Entities.BorrowedBooks", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("BookId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("BorrowDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid>("BorrowerId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("ReturnDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("BookId");
+
+                    b.HasIndex("BorrowerId");
+
+                    b.ToTable("BorrowedBooks", (string)null);
+                });
+
+            modelBuilder.Entity("LibraryTask_dexef.Domain.Entities.RefreshToken", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("Created")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("Expires")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("Revoked")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Token")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("RefreshToken", (string)null);
                 });
 
             modelBuilder.Entity("LibraryTask_dexef.Domain.Entities.RoleIdentity", b =>
@@ -303,35 +363,34 @@ namespace LibraryTask_dexef.Migrations
                     b.ToTable("UserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("LibraryTask_dexef.Domain.Entities.BorrowedBooks", b =>
+                {
+                    b.HasOne("LibraryTask_dexef.Domain.Entities.Book", "Book")
+                        .WithMany()
+                        .HasForeignKey("BookId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("LibraryTask_dexef.Domain.Entities.ApplicationUser", "Borrower")
+                        .WithMany()
+                        .HasForeignKey("BorrowerId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Book");
+
+                    b.Navigation("Borrower");
+                });
+
             modelBuilder.Entity("LibraryTask_dexef.Domain.Entities.RefreshToken", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                    b.HasOne("LibraryTask_dexef.Domain.Entities.ApplicationUser", "User")
+                        .WithMany("RefreshTokens")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<DateTime>("Created")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("Expires")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("Revoked")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Token")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<Guid>("UserId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("RefreshToken", (string)null);
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("LibraryTask_dexef.Domain.Entities.UserRoles", b =>
@@ -387,17 +446,6 @@ namespace LibraryTask_dexef.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("LibraryTask_dexef.Domain.Entities.RefreshToken", b =>
-                {
-                    b.HasOne("LibraryTask_dexef.Domain.Entities.ApplicationUser", "User")
-                        .WithMany("RefreshTokens")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("LibraryTask_dexef.Domain.Entities.ApplicationUser", b =>
