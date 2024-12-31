@@ -1,27 +1,22 @@
+using libraryTask_dexef.Application.Common;
+using LibraryTask_dexef.WebApi.Extensions;
+using static LibraryTask_dexef.Application.Common.Exceptions.ProgramExeption;
+
 namespace LibraryTask_dexef
 {
     public class Program
     {
-        public static void Main(string[] args)
+        public static async Task Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            // Add services to the container.
+            var configuration = builder.Configuration.Get<AppSettings>()
+                ?? throw ProgramException.AppsettingNotSetException();
 
-            builder.Services.AddControllers();
+            builder.Services.AddSingleton(configuration);
+            var app = await builder.ConfigureServices(configuration).ConfigurePipelineAsync(configuration);
 
-            var app = builder.Build();
-
-            // Configure the HTTP request pipeline.
-
-            app.UseHttpsRedirection();
-
-            app.UseAuthorization();
-
-
-            app.MapControllers();
-
-            app.Run();
+            await app.RunAsync();
         }
     }
 }

@@ -11,7 +11,5 @@ namespace LibraryTask_dexef.Domain.Entities
 
         public int PublishedYear { get; set; }
         public bool IsAvailable { get; set; }
-
-        public double? Price { get; set; }
     }
 }

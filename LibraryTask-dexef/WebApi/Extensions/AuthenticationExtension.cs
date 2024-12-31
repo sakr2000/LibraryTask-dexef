@@ -9,7 +9,7 @@ namespace LibraryTask_dexef.WebApi.Extensions
 {
     public static class AuthenticationExtensions
     {
-        public static void AddAuth(this IServiceCollection services, Identity identitySettings)
+        public static void AddAuth(this IServiceCollection services, Identity identitySettings, bool isLocal = false)
         {
             var authenticationBuilder = services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme);
             authenticationBuilder.AddJwtBearer($"{JwtBearerDefaults.AuthenticationScheme}_{identitySettings.Issuer}", options =>
@@ -17,7 +17,7 @@ namespace LibraryTask_dexef.WebApi.Extensions
                 options.TokenValidationParameters = new TokenValidationParameters
                 {
                     ValidateIssuer = true,
-                    ValidateLifetime = true,
+                    ValidateLifetime = !isLocal, // Disable lifetime validation for local
                     ValidateAudience = true,
                     ValidIssuer = identitySettings.Issuer,
                     ValidAudience = identitySettings.Audience,
@@ -30,13 +30,17 @@ namespace LibraryTask_dexef.WebApi.Extensions
 
             services.AddAuthorization(options =>
             {
-                var authSchemes = $"{JwtBearerDefaults.AuthenticationScheme}_{identitySettings.Issuer}"; options.DefaultPolicy = new AuthorizationPolicyBuilder().RequireAuthenticatedUser().AddAuthenticationSchemes(authSchemes).Build();
+                var authSchemes = $"{JwtBearerDefaults.AuthenticationScheme}_{identitySettings.Issuer}";
+                options.DefaultPolicy = new AuthorizationPolicyBuilder()
+                    .RequireAuthenticatedUser()
+                    .AddAuthenticationSchemes(authSchemes)
+                    .Build();
 
                 options.AddPolicy("user_read", policy => policy.Requirements.Add(
                     new HasScopeRequirement(
-                    identitySettings.ScopeBaseDomain,
-                     identitySettings.ScopeBaseDomain + "/read",
-                     identitySettings.Issuer)));
+                        identitySettings.ScopeBaseDomain,
+                        identitySettings.ScopeBaseDomain + "/read",
+                        identitySettings.Issuer)));
 
                 options.AddPolicy("user_write", policy => policy.Requirements.Add(
                     new HasScopeRequirement(
@@ -45,41 +49,6 @@ namespace LibraryTask_dexef.WebApi.Extensions
                         identitySettings.Issuer)));
             });
         }
-        public static void AddAuthLocal(this IServiceCollection services, Identity identitySettings)
-        {
-            var authenticationBuilder = services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme);
-            authenticationBuilder.AddJwtBearer($"{JwtBearerDefaults.AuthenticationScheme}_{identitySettings.Issuer}", options =>
-            {
-                options.TokenValidationParameters = new TokenValidationParameters
-                {
-                    ValidateIssuer = true,
-                    ValidateLifetime = false,
-                    ValidateAudience = true,
-                    ValidIssuer = identitySettings.Issuer,
-                    ValidAudience = identitySettings.Audience,
-                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(identitySettings.Key)),
-                    ValidateIssuerSigningKey = true,
-                };
-                options.Authority = identitySettings.Issuer;
-                options.RequireHttpsMetadata = identitySettings.ValidateHttps;
-            });
 
-            services.AddAuthorization(options =>
-            {
-                var authSchemes = $"{JwtBearerDefaults.AuthenticationScheme}_{identitySettings.Issuer}"; options.DefaultPolicy = new AuthorizationPolicyBuilder().RequireAuthenticatedUser().AddAuthenticationSchemes(authSchemes).Build();
-
-                options.AddPolicy("user_read", policy => policy.Requirements.Add(
-                    new HasScopeRequirement(
-                    identitySettings.ScopeBaseDomain,
-                     identitySettings.ScopeBaseDomain + "/read",
-                     identitySettings.Issuer)));
-
-                options.AddPolicy("user_write", policy => policy.Requirements.Add(
-                    new HasScopeRequirement(
-                        identitySettings.ScopeBaseDomain,
-                        identitySettings.ScopeBaseDomain + "/write",
-                        identitySettings.Issuer)));
-            });
-        }
     }
 }
